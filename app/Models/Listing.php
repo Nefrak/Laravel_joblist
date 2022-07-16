@@ -26,13 +26,13 @@ class Listing extends Model
         }
     }
 
-    /*public function messages()
-    {
-        return $this->hasMany(Message::class, 'listing_id');
-    }*/
-
     public function user()
     {
         return $this->belongsTo(User::class, 'id');
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'listing_id');
     }
 }

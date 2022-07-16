@@ -40,6 +40,9 @@
                     </span>
                 </li>
                 <li>
+                    <a href="/messages/view" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Messages</a>
+                </li>
+                <li>
                     <a href="/listings/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Listings</a>
                 </li>
                 <li>

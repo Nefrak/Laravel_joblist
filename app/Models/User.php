@@ -46,4 +46,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Listing::class, 'user_id');
     }
+
+    /**
+     * Get users email.
+     *
+     * @var string
+     */
+    public function getEmail()
+    {
+        return $this->fillable['email'];
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'user_id');
+    }
 }

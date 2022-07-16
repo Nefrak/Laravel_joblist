@@ -35,18 +35,54 @@
                 </div>
             </div>
         </x-card>
-        <x-card class="mt-4 p-2 flex space-x-6">
+
+        @auth
+        <x-card class="mt-4 p-2 space-x-6 text-center h-100 d-flex align-items-center justify-content-center">
+            <form method="POST" action="/messages">
+                @csrf
+
+            <input type="hidden" name="listing_id"  value="{{$listing->id}}">
+
+            <div class="mb-6">
+                <label for="email" class="inline-block text-lg mb-2">
+                    Contact Email
+                </label>
+                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="email" value="{{$email}}" />
+
+                @error('email')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label for="content" class="inline-block text-lg mb-2">
+                    Content
+                </label>
+                <textarea class="border border-gray-200 rounded p-2 w-full" name="content" rows="10"
+                    placeholder="Include tasks, requirements, salary, etc">{{old('content')}}</textarea>
+
+                @error('content')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
+            </div>
+
+                <button class="text-gray-800"><i class="fa-solid fa-envelope fa-xl"></i> Send</button>
+            </form>
+        </x-card>
+
+        <x-card class="mt-4 p-2 flex text-center space-x-6">
             <a href="/listings/{{$listing->id}}/edit">
                 <i class="fa-solid fa-pencil"></i> Edit
             </a>
         </x-card>
 
-        <x-card class="mt-4 p-2 flex space-x-6">
+        <x-card class="mt-4 p-2 d-flex space-x-6 flex text-center">
             <form method="POST" action="/listings/{{$listing->id}}">
                 @csrf
                 @method('DELETE')
                 <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
             </form>
         </x-card>
+        @endauth
     </div>
 </x-layout>

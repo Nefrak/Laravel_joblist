@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,3 +54,9 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 // Log in user
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+// Show messages
+Route::get('/messages/view', [MessageController::class, 'view'])->middleware('auth');
+
+// Create (send) message
+Route::post('/messages', [MessageController::class, 'create'])->middleware('auth');
