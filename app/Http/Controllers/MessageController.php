@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
+    // Show all messages under auth user listings
     public function view()
     {
         return view('messages.list', [
@@ -16,6 +17,7 @@ class MessageController extends Controller
         ]);
     }
 
+    // Create message under listing
     public function create(Request $request)
     {
         $formFields = $request->validate([

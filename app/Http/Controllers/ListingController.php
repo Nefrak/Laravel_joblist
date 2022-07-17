@@ -12,7 +12,6 @@ class ListingController extends Controller
     // Show all listings
     public function index()
     {
-        //dd(request(['tag', 'search']));
         return view('listings.index', [
             'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(6)
         ]);
@@ -107,7 +106,7 @@ class ListingController extends Controller
         return redirect('/')->with('message', 'Listing deleted successfully');
     }
 
-    // Manage Listings
+    // Manage listings
     public function manage()
     {
         return view('listings.manage', ['listings' => auth()->user()->listings()->get()]);

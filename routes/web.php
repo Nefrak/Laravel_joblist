@@ -43,7 +43,7 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']);
 // Show register form
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 
-// Show login form
+// Show login form (name function is needed for redirection in auth -> redirect to login if not authorized)
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
 // Create new user
